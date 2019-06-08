@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.17.1"
+    "ejs-locals": "^1.0.2",
+    "express": "^4.17.1",
+    "pg": "^7.11.0"
   }
 }

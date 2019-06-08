@@ -1,0 +1,151 @@
+<!--login form popup-->
+<div class="login-wrapper" id="login-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+        <h3>Entrar</h3>
+        <form method="post" action="http://haintheme.com/demo/html/bustter/login.php">
+        	<div class="row">
+        		 <label for="username">
+                    Usuario:
+                    <input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                </label>
+        	</div>
+           
+            <div class="row">
+            	<label for="password">
+                    Contraseña:
+                    <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                </label>
+            </div>
+           <div class="row">
+           	 <button type="submit">Entrar</button>
+           </div>
+        </form>
+    </div>
+</div>
+<!--end of login form popup-->
+<!--signup form popup-->
+<div class="login-wrapper"  id="signup-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+        <h3>Registro</h3>
+        <form method="post">
+            <div class="row">
+                 <label for="register-name">
+                    Nombre:
+                    <input type="text" name="first-name" id="register-first-name" placeholder="Jhon" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                </label>
+			</div>
+			<div class="row">
+				<label for="register-name">
+				   Apellidos:
+				   <input type="text" name="last-name" id="register-last-name" placeholder="Doe" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+			   </label>
+		   </div>
+            <div class="row">
+                <label for="register-email">
+                    Correo electronico:
+                    <input type="password" name="email" id="register-email" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                </label>
+            </div>
+             <div class="row">
+                <label for="register-password">
+                    Contraseña:
+                    <input type="password" name="password" id="register-password" placeholder="********" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                </label>
+            </div>
+             <div class="row">
+                <label for="retype-repassword">
+                    Repite contraseña:
+                    <input type="password" name="password" id="retype-repassword" placeholder="********" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                </label>
+			</div>
+
+           <div class="row">
+             <button type="submit" id="signup">Registrarse</button>
+           </div>
+        </form>
+    </div>
+</div>
+<!--end of signup form popup-->
+
+<!-- BEGIN | Header -->
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only">Toggle navigation</span>
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+				    <a href="index.html"><img class="logo" src="./static/img/logo1.png" alt="" width="119" height="58"></a>
+			    </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+							Inicio <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="index.html">Home 01</a></li>
+								<li><a href="homev2.html">Home 02</a></li>
+								<li><a href="homev3.html">Home 03</a></li>
+							</ul>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							Peliculas<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Movie grid<i class="ion-ios-arrow-forward"></i></a>
+									<ul class="dropdown-menu level2">
+										<li><a href="moviegrid.html">Movie grid</a></li>
+										<li><a href="moviegridfw.html">movie grid full width</a></li>
+									</ul>
+								</li>			
+								<li><a href="movielist.html">Movie list</a></li>
+								<li><a href="moviesingle.html">Movie single</a></li>
+								<li class="it-last"><a href="seriessingle.html">Series single</a></li>
+							</ul>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							Actores <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="celebritygrid01.html">celebrity grid 01</a></li>
+								<li><a href="celebritygrid02.html">celebrity grid 02 </a></li>
+								<li><a href="celebritylist.html">celebrity list</a></li>
+								<li class="it-last"><a href="celebritysingle.html">celebrity single</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">        
+						<li class="loginLink"><a href="#">Entrar</a></li>
+						<li class="btn signupLink"><a href="#">Registrarse</a></li>
+					</ul>
+				</div>
+			<!-- /.navbar-collapse -->
+	    </nav>
+	    
+	    <!-- top search form -->
+	    <div class="top-search">
+	    	<select>
+				<option value="movies">Peliculas</option>
+				<option value="actors">Actores</option>
+			</select>
+			<input type="text" placeholder="Busca tus peliculas o tus actores favoritos">
+	    </div>
+	</div>
+</header>
+<!-- END | Header -->
