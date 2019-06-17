@@ -34,9 +34,15 @@
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
+							<% if(!totalScore) { %>
+							<p><span>0</span> /5<br>
+								<span class="rv"><%= scored %> Calificaciones</span>
+							</p>
+							<% } else { %>
 							<p><span><%= totalScore %></span> /5<br>
 								<span class="rv"><%= scored %> Calificaciones</span>
 							</p>
+							<% } %>
 						</div>
 						<div class="rate-star">
 							<p>Calificación: </p>

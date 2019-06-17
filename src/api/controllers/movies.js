@@ -126,11 +126,15 @@ module.exports = {
             myScore = await query(
                 `SELECT "Estrellas"
                 FROM "Calificacion" 
-                WHERE "idUsuario" = $1 AND "idPelicula" = $2;`,[req.session.passport.user.idUsuario, req.params.id]),
+                WHERE "idUsuario" = $1 AND "idPelicula" = $2;`,[req.session.passport.user.idUsuario, req.params.id]);
             
-            myScore = myScore.rows[0].Estrellas
+            if(myScore.length > 0) {
+                myScore = myScore.rows[0].Estrellas
+                myScore = `star-${myScore}`
+            } else {
+                myScore = `star-0`
+            }
 
-            myScore = `star-${myScore}`
 
         }
         

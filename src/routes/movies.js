@@ -16,8 +16,8 @@ router.get('/buscar/favorita', controllers.search)
 router.get('/editar/:id', middlewares.authorization, controllers.dataMovie)
 
 router.post('/agregar', middlewares.authorization, controllers.save)
-router.post('/calificacion', middlewares.authorization, controllers.addScore)
-router.post('/agregar/favorita', middlewares.authorization, controllers.addFavoriteMovie)
+router.post('/calificacion', controllers.addScore)
+router.post('/agregar/favorita', controllers.addFavoriteMovie)
 router.post('/agregar/comentario', middlewares.authorization, controllers.addCommentMovie)
 
 router.put('/editar', middlewares.authorization, controllers.editMovie)

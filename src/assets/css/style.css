@@ -5672,14 +5672,14 @@ ul {
 }
 .common-hero {
   height: 385px;
-  background: url('../img/uploads/user-hero-bg.jpg') no-repeat;
+  background: #020D18;
 }
 .common-hero:before {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .user-hero {
   height: 385px;
-  background: url('../img/uploads/user-hero-bg.jpg') no-repeat;
+  background: #020D18;
 }
 .user-hero .hero-ct {
   padding-top: 225px;
@@ -5761,13 +5761,13 @@ ul {
 .landing-version .redbtn:hover {
   color: #fff;
 }
-.redbtn {
+.redbtn, button, input[type="button"], input[type="submit"], li.btn > a  {
   font-family: 'Dosis', sans-serif;
   font-size: 14px;
   color: #abb7c4;
   font-weight: bold;
   text-transform: uppercase;
-  background-color: #dd003f;
+  background-color: #0AC92B !important;
   color: #ffffff;
   padding: 13px 25px;
   -webkit-border-radius: 5px;
@@ -8140,7 +8140,7 @@ header#headerv3-light {
   }
 }
 footer {
-  background: url('../img/uploads/ft-bg.jpg') no-repeat;
+  background: #020D18;
   background-position: center;
   background-size: cover;
 }
