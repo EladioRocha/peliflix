@@ -1,0 +1,76 @@
+<% include partials/head -%>
+<%- include partials/preloader %>
+<%- include partials/header %>
+<%- include partials/profile/hero %>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form action="/" class="user">
+						<h4>Detalles de la película</h4>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Título</label>
+								<input type="text" placeholder="El rey leon" id="title">
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Categoría</label>
+								<select id="categories">
+									<% for (category of categories) { %>
+										<option value="<%= category.idCategoria %>"><%= category.nombreCategoria %></option>
+									<% } %>
+								</select>	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Director</label>
+								<select id="directors">
+									<% for (director of directors) { %>
+										<option value="<%= director.idDirector %>"><%= director.nombreDirector %> <%= director.apellidoDirector %> </option>
+									<% } %>
+								</select>
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Actores</label>
+								<select id="actors">
+									<% for (actor of actors) { %>
+										<option value="<%= actor.idActor %>"><%= actor.nombreActor %> <%= actor.apellidoActor %> </option>
+									<% } %>
+								</select>							
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Productor</label>
+								<select id="productors">
+									<% for (productor of productors) { %>
+										<option value="<%= productor.idProductor %>"><%= productor.nombreProductor %></option>
+									<% } %>
+								</select>								
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Poster</label>
+								<input type="file" id="poster" accept="image/x-png" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<textarea rows="30" name="summary" id="summary" placeholder="Resumen de la película."></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="Subir" id="add_movie">
+							</div>
+						</div>	
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% script('/static/js/add_movie.js') -%>
+<%- include partials/footer %>

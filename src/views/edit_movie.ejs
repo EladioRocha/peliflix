@@ -1,0 +1,91 @@
+<% include partials/head -%>
+<%- include partials/preloader %>
+<%- include partials/header %>
+<%- include partials/profile/hero %>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form action="/" class="user">
+						<h4>Editar película</h4>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Título</label>
+								<input type="text" value="<%= rows[0].nombrePelicula %>" id="title">
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Categoría</label>
+								<select id="categories">
+                                    <% for (category of categories) { %>
+                                        <% if(rows[0].idCategoria === category.idCategoria) { %>
+										    <option value="<%= category.idCategoria %>" selected><%= category.nombreCategoria %></option>
+                                        <% } else { %>
+										    <option value="<%= category.idCategoria %>"><%= category.nombreCategoria %></option>
+                                        <% } %>
+									<% } %>
+								</select>	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Director</label>
+								<select id="directors">
+                                    <% for (director of directors) { %>
+                                        <% if(myDirector.rows[0].idDirector === director.idDirector) { %>
+                                            <option value="<%= director.idDirector %>" selected><%= director.nombreDirector %> <%= director.apellidoDirector %> </option>
+                                        <% } else { %>
+                                            <option value="<%= director.idDirector %>"><%= director.nombreDirector %> <%= director.apellidoDirector %> </option>
+                                        <% } %>
+									<% } %>
+								</select>
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Actores</label>
+								<select id="actors">
+                                    <% for (actor of actors) { %>
+                                        <% if(myActor.rows[0].idActor === actor.idActor) { %>
+                                            <option value="<%= actor.idActor %>" selected><%= actor.nombreActor %> <%= actor.apellidoActor %> </option>
+                                        <% } else { %>
+                                            <option value="<%= actor.idActor %>"><%= actor.nombreActor %> <%= actor.apellidoActor %> </option>
+                                        <% } %>
+									<% } %>
+								</select>							
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Productor</label>
+								<select id="productors">
+                                    <% for (productor of productors) { %>
+                                        <% if(myProductor.rows[0].idProductor === productor.idProductor) { %>
+										    <option value="<%= productor.idProductor %>" selected><%= productor.nombreProductor %></option>
+                                        <% } else { %>
+										    <option value="<%= productor.idProductor %>"><%= productor.nombreProductor %></option>
+                                        <% } %>
+									<% } %>
+								</select>								
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Poster</label>
+								<input type="file" id="poster" accept="image/x-png">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<textarea rows="30" name="summary" id="summary"><%= rows[0].Resumen %></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="button" value="Actualizar" id="edit-movie">
+							</div>
+						</div>	
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% script('/static/js/add_movie.js') -%>
+<%- include partials/footer %>

@@ -1,0 +1,137 @@
+<% include partials/head -%>
+<%- include partials/preloader %>
+<%- include partials/header %>
+<div class="hero mv-single-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+</div>
+<div class="page-single movie-single movie_single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="/static/img/posters/<%= rows[0].fotoPoster %>" alt="">
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd"><%= rows[0].nombrePelicula %> <span>
+						<% if(session) { %>
+							<a href="/peliculas/editar/<%= rows[0].idPelicula%>"><i class="ion-edit cursor" id="edit-movie"></i></a>
+							<i class="ion-android-delete cursor" id="delete-movie"></i>
+						<% } %>
+					</span></h1>
+					<div class="social-btn">
+						<% if (!favorite) { %>
+							<a class="parent-btn"><i class="ion-heart cursor" id="add-favorite"></i> Añadir a favoritas</a>
+						<% } else { %>
+							<a class="parent-btn">Añadida a favoritos</a>
+						<% } %>
+					</div>
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							<p><span><%= totalScore %></span> /5<br>
+								<span class="rv"><%= scored %> Calificaciones</span>
+							</p>
+						</div>
+						<div class="rate-star">
+							<p>Calificación: </p>
+							<% for (let i = 1; i <= 5; i++) { %>
+								<% if (`star-${i}` <= myScore) { %>
+									<i class="ion-ios-star star" id="star-<%= i %>"></i>
+								<% } else { %>
+									<i class="ion-ios-star-outline star" id="star-<%= i %>"></i>
+								<% } %>
+							<% } %>
+						</div>
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview">Detalles</a></li>
+								<li><a href="#reviews"> Comentarios</a></li>
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<p><%= rows[0].Resumen%></p>
+										</div>
+
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director/es: </h6>
+						            			<p><a href="#"><%= organization[0].nombreDirector %> <%= organization[0].apellidoDirector %></a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Productor/es: </h6>
+						            			<p><a href="#"><%= organization[0].nombreProductor %></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Actores: </h6>
+						            			<p><a href="#"><%= organization[0].nombreActor %> <%= organization[0].apellidoActor %></a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Categoría/s:</h6>
+						            			<p><a href="#"><%= organization[0].nombreCategoria %></a></p>
+						            		</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Comentarios de: </h3>
+						       	 				<h2><%= rows[0].nombrePelicula %></h2>
+											</div>
+											<% if(session) { %>
+												<a href="#write-comment" class="redbtn">Escribir un comentario</a>
+											<% } %>
+						            	</div>
+						            	<div class="topbar-filter">
+											<p>Encontrado <span id="num-comments"><%= comments.length %> comentario(s)</span> en total</p>
+										</div>
+										<div class="mv-user-review-item" id="user-comment">
+												<% for(comment of comments) { %>
+												<div class="user-infor">
+													<div>
+														<p class="time">
+														<% if (session.idUsuario === comment.idUsuario) { %>
+															<a href="#">Tú comentario</a></a>
+														<% } else { %>
+															<a href="#"><%= comment.Correo %></a></a>
+														<% } %>
+													</p>
+												</div>
+											</div>
+											<p><%= comment.Comentario %></p>
+											<% } %>
+										</div>
+                                        <% if(session) { %>
+                                        <div id="write-comment">
+											<form>
+												<textarea rows="30" name="comment" id="comment" placeholder="Deja tu comentario aquí."></textarea>
+												<div>
+													<a id="add-comment" class="redbtn cursor">Enviar</a>
+												</div>
+											</form>
+                                        </div>
+                                        <% } %>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% script('/static/js/single.js') -%>
+<%- include partials/footer %>

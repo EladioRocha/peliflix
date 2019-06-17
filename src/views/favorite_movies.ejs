@@ -1,0 +1,57 @@
+<% include partials/head -%>
+<%- include partials/preloader %>
+<%- include partials/header %>
+<%- include partials/profile/hero %>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<%- partial('partials/profile/details', {active: 'second'}) %>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				
+				<div class="topbar-filter fw">
+					<p>Encontrada <span id="total-movies"><%= rows.length %> película(s) </span> en total</p>
+				</div>
+				<div class="flex-wrap-movielist mv-grid-fw" id="content">
+					<% for(movie of rows) { %>
+					<div class="movie-item-style-2 movie-item-style-1">
+						<img src="/static/img/posters/<%= movie.fotoPoster %>" alt="Poster de <%= movie.nombrePelicula %>">
+						<div class="hvr-inner">
+							<a  href="/peliculas/<%= movie.idPelicula %>"> Leer más <i class="ion-android-arrow-dropright"></i> </a>
+						</div>
+						<div class="mv-item-infor">
+							<h6><a href="#"><%= movie.nombrePelicula %></a></h6>
+							<% if(movie.Privacidad) { %>
+								<p class="rate" id="privacity"><i class="ion-eye cursor" id="<%= movie.idPelicula %>"></i><span>Pública</span><p>
+							<% } else { %>
+								<p class="rate" id="privacity"><i class="ion-eye-disabled cursor" id="<%= movie.idPelicula %>"></i><span>Privada</span><p>
+							<% } %>
+						</div>
+					</div>	
+					<% } %>				
+				</div>		
+				<div class="topbar-filter">
+					<label>Películas por página:</label>
+					<select>
+						<option value="range">20 Películas</option>
+						<option value="saab">10 Películas</option>
+					</select>
+					
+					<div class="pagination2">
+						<span>Página 1 de 2:</span>
+						<a class="active" href="#">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">...</a>
+						<a href="#">78</a>
+						<a href="#">79</a>
+						<a href="#"><i class="ion-arrow-right-b"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% script('/static/js/profile.js') -%>
+<%- include partials/footer %>

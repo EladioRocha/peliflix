@@ -1,26 +1,25 @@
 <!--login form popup-->
+<% if(!session) { %>
 <div class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>Entrar</h3>
-        <form method="post" action="http://haintheme.com/demo/html/bustter/login.php">
-        	<div class="row">
-        		 <label for="username">
-                    Usuario:
-                    <input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
-                </label>
-        	</div>
-           
-            <div class="row">
-            	<label for="password">
-                    Contraseña:
-                    <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-           <div class="row">
-           	 <button type="submit">Entrar</button>
-           </div>
-        </form>
+		<div class="row">
+				<label for="login-email">
+				Correo:
+				<input type="text" name="login-email" id="login-email" placeholder="email@email.com" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+			</label>
+		</div>
+		
+		<div class="row">
+			<label for="login-password">
+				Contraseña:
+				<input type="password" name="login-password" id="login-password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+			</label>
+		</div>
+		<div class="row">
+			<button type="submit" id="login">Entrar</button>
+		</div>
     </div>
 </div>
 <!--end of login form popup-->
@@ -28,45 +27,52 @@
 <div class="login-wrapper"  id="signup-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
-        <h3>Registro</h3>
-        <form method="post">
-            <div class="row">
-                 <label for="register-name">
-                    Nombre:
-                    <input type="text" name="first-name" id="register-first-name" placeholder="Jhon" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
-                </label>
-			</div>
+		<h3>Registro</h3>
+		<div class="row">
+				<label for="register-first-name">
+				<span class="span-input">Nombre:</span>
+				<input type="text" name="first-name" id="register-first-name" placeholder="Nombre" required="required" />
+				<input type="hidden" name="email" id="register-email" placeholder="correo@correo.com" required="required" />
+			</label>
+		</div>
+		<div class="row">
+			<label for="register-last-name">
+				<span class="span-input">Apellidos:</span>
+				<input type="text" name="last-name" id="register-last-name" placeholder="Apellido" required="required" />
+				<input type="hidden" name="telephone" id="register-telephone" placeholder="0555666777" required="required" />
+			</label>
+		</div>
+		<div class="row">
+			<label for="register-email">
+				<span class="span-input">Dirección:</span>
+				<input type="text" name="address" id="register-address" placeholder="Lomas de Balvanera #5" required="required" />
+				<input type="hidden" name="birthdate" id="birthdate" required="required" />
+			</label>
+		</div>
+		<div class="row">
+			<label for="register-password">
+				<span class="span-input">Contraseña:</span>
+				<input type="password" name="password" id="register-password" placeholder="********" required="required" />
+				<select id="gender" class="hidden">
+					<option value="0">Masculino</option>
+					<option value="1">Femenino</option>
+				</select>
+			</label>
+		</div>
 			<div class="row">
-				<label for="register-name">
-				   Apellidos:
-				   <input type="text" name="last-name" id="register-last-name" placeholder="Doe" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
-			   </label>
-		   </div>
-            <div class="row">
-                <label for="register-email">
-                    Correo electronico:
-                    <input type="password" name="email" id="register-email" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-             <div class="row">
-                <label for="register-password">
-                    Contraseña:
-                    <input type="password" name="password" id="register-password" placeholder="********" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-             <div class="row">
-                <label for="retype-repassword">
-                    Repite contraseña:
-                    <input type="password" name="password" id="retype-repassword" placeholder="********" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-			</div>
+			<label for="retype-repassword">
+				<span class="span-input">Repite contraseña:</span>
+				<input type="password" name="password" id="retype-password" placeholder="********" required="required" />
+			</label>
+		</div>
 
-           <div class="row">
-             <button type="submit" id="signup">Registrarse</button>
-           </div>
-        </form>
+		<div class="row">
+			<button id="next-modal">Siguiente</button>
+			<button type="submit" id="signup" class="hidden">Registrarse</button>
+		</div>
     </div>
 </div>
+<% } %>
 <!--end of signup form popup-->
 
 <!-- BEGIN | Header -->
@@ -83,7 +89,7 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="index.html"><img class="logo" src="./static/img/logo1.png" alt="" width="119" height="58"></a>
+				    <a href="/"><img class="logo" src="/static/img/logo1.png" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -92,47 +98,25 @@
 							<a href="#page-top"></a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-							Inicio <i class="fa fa-angle-down" aria-hidden="true"></i>
+							<a class="btn btn-default dropdown-toggle lv1" href="/">
+							Inicio <i aria-hidden="true"></i>
 							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="index.html">Home 01</a></li>
-								<li><a href="homev2.html">Home 02</a></li>
-								<li><a href="homev3.html">Home 03</a></li>
-							</ul>
 						</li>
+						<% if (session) { %>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Peliculas<i class="fa fa-angle-down" aria-hidden="true"></i>
+							<a class="btn btn-default dropdown-toggle lv1" href="/perfil">
+							Perfil <i></i>
 							</a>
-							<ul class="dropdown-menu level1">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Movie grid<i class="ion-ios-arrow-forward"></i></a>
-									<ul class="dropdown-menu level2">
-										<li><a href="moviegrid.html">Movie grid</a></li>
-										<li><a href="moviegridfw.html">movie grid full width</a></li>
-									</ul>
-								</li>			
-								<li><a href="movielist.html">Movie list</a></li>
-								<li><a href="moviesingle.html">Movie single</a></li>
-								<li class="it-last"><a href="seriessingle.html">Series single</a></li>
-							</ul>
 						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Actores <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="celebritygrid01.html">celebrity grid 01</a></li>
-								<li><a href="celebritygrid02.html">celebrity grid 02 </a></li>
-								<li><a href="celebritylist.html">celebrity list</a></li>
-								<li class="it-last"><a href="celebritysingle.html">celebrity single</a></li>
-							</ul>
-						</li>
+						<% } %>
 					</ul>
-					<ul class="nav navbar-nav flex-child-menu menu-right">        
-						<li class="loginLink"><a href="#">Entrar</a></li>
-						<li class="btn signupLink"><a href="#">Registrarse</a></li>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						<% if(!session) { %>    
+							<li class="loginLink"><a href="#">Entrar</a></li>
+							<li class="btn signupLink"><a href="#">Registrarse</a></li>
+						<% } else { %>
+							<li class="btn"><a href="/agregar">Subir película</a></li>
+						<% } %>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
@@ -140,11 +124,14 @@
 	    
 	    <!-- top search form -->
 	    <div class="top-search">
-	    	<select>
-				<option value="movies">Peliculas</option>
-				<option value="actors">Actores</option>
+	    	<select id="select-searcher">
+				<option value="Pelicula">Título</option>
+				<option value="Actor">Actores</option>
+				<option value="Productor">Productor</option>
+				<option value="Director">Director</option>
+				<option value="peliculas_favoritas">Listas favoritas</option>
 			</select>
-			<input type="text" placeholder="Busca tus peliculas o tus actores favoritos">
+			<input type="text" placeholder="Busca tus peliculas o tus actores favoritos" id="searcher">
 	    </div>
 	</div>
 </header>

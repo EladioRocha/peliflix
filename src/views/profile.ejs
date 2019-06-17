@@ -1,0 +1,85 @@
+<% include partials/head -%>
+<%- include partials/preloader %>
+<%- include partials/header %>
+<%- include partials/profile/hero %>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+                <%- partial('partials/profile/details', {active: 'first'}) %>
+                <div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form action="#" class="user">
+						<h4>Detalles del usuario</h4>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label for="first-name">Nombre</label>
+								<input disabled="true" type="text" placeholder="Jhon" id="first-name" value="<%= session.Nombre %>">
+							</div>
+							<div class="col-md-6 form-it">
+								<label for="last-name">Apellidos</label>
+								<input disabled="true" type="text" placeholder="Doe" id="last-name" value="<%= session.Apellido %>">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label for="email">Correo electronico</label>
+								<input type="text" placeholder="email@gmail.com" id="email" value="<%= session.Correo %>">
+                            </div>
+                            <div class="col-md-6 form-it">
+                                <label for="address">Dirección</label>
+                                <input type="text" placeholder="Lomas de Balvanera" id="address" value="<%= session.Direccion %>">
+                            </div>
+						</div>
+						<div class="row">
+                            <div class="col-md-6 form-it">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" id="telephone" value="<%= session.telefono %>">
+                            </div>
+							<div class="col-md-6 form-it">
+								<label>Genero</label>
+								<select id="gender">
+								  <option value="0" selected="<% (!session.Genero) ? true : false %>" >Masculino</option>
+								  <option value="1" selected="<% (session.Genero) ? true : false %>">Femenino</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="button" value="Guardar" id="change-profile">
+							</div>
+						</div>	
+					</form>
+					<form action="#" class="password" id="change-password">
+						<h4>Cambiar contraseña</h4>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label for="current-password">Contraseña actual</label>
+								<input type="text" placeholder="**********" id="current-password">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label for="new-password">Nueva contraseña</label>
+								<input type="text" placeholder="***************" id="new-password">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label for="confirm-new-password">Confirmar nueva contraseña</label>
+								<input type="text" placeholder="***************" id="confirm-new-password">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="Cambiar" id="change">
+							</div>
+						</div>	
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% script('/static/js/profile.js') -%>
+<%- include partials/footer %>

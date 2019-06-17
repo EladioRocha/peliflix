@@ -1,0 +1,27 @@
+<div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="user-information">
+            <div class="user-fav">
+                <p>Detalles de la cuenta</p>
+                <ul>
+                    <% if (active === 'first') { %>
+                        <li class="active"><a href="/perfil">Perfil</a></li>
+                        <li><a href="/favoritas">Películas favoritas</a></li>
+                    <% } else { %>
+                        <li><a href="/perfil">Perfil</a></li>
+                        <li class="active"><a href="/favoritas">Películas favoritas</a></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="user-fav">
+                <ul>
+                    <% if (active === 'first') { %>
+                        <li><a href="#change-password">Cambiar contraseña</a></li>
+                        <li><a href="/usuarios/salir">Salir</a></li>
+                        <% } else { %>
+                            <li><a href="/usuarios/salir">Salir</a></li>
+                    <% } %>
+
+                </ul>
+            </div>
+        </div>
+    </div>
