@@ -1,47 +1,46 @@
-# peliflix
+# Peliflix — Movie Catalog
 
-Aplicación web de películas con Express, EJS y PostgreSQL. Incluye rutas y vistas de películas, usuarios, perfiles y favoritos.
+A server-rendered movie catalog built with **Express, EJS, Passport, and PostgreSQL**. The source includes movie search, ratings, comments, favorites, profiles, and movie management routes.
 
-## Estructura
+## Setup
 
-- [src](src)
-
-## Preparación y uso
-
-Requiere PostgreSQL y las variables de conexión usadas en `src/api/database/index.js`. Define `PORT` o `DEVPORT` para el servidor. El repositorio no contiene una migración SQL completa que permita asegurar la creación automática de la base.
-
-### Raíz del repositorio
-
-Requiere Node.js. Este paquete no fija una versión del runtime; valida compatibilidad con las dependencias antes de actualizarlo.
+Install Node.js, npm, and PostgreSQL. From the repository root:
 
 ```sh
 npm ci
-npm run dev
 ```
 
-Comandos declarados en [package.json](package.json):
+Configure a local `.env` using the variable names below. Use your own development values rather than any historical configuration stored in the repository.
 
-| Comando | Acción |
+| Variable | Purpose |
 | --- | --- |
-| `npm run dev` | `nodemon src/app.js` |
-| `npm run start` | `node src/app.js` |
+| `USER` | PostgreSQL user. |
+| `PASSWORD` | PostgreSQL password. |
+| `HOST` | PostgreSQL host. |
+| `DATABASE` | Database name. |
+| `DATABASEPORT` | PostgreSQL port. |
+| `DEVPORT` | Application listening port, for example `3000`. |
+| `PORT` | Optional override for `DEVPORT`. |
 
-## Configuración detectada en el código
+The database schema is not provisioned automatically. Review the SQL in [src/api/controllers](src/api/controllers) and prepare matching tables before testing the catalog. The repository does not provide a complete migration workflow.
 
-Estas son referencias explícitas a variables de entorno, no una garantía de que toda la configuración esté externalizada. Los nombres y archivos permiten localizar dónde se usan; los valores deben corresponder a tu entorno.
+```sh
+npm start
+```
 
-| Variable | Referencia |
+Open `http://localhost:3000` if you chose port 3000. `npm run dev` calls `nodemon`, but that tool is not declared in the package dependencies; `npm start` is the documented entry point.
+
+## Application layout
+
+| Path | Purpose |
 | --- | --- |
-| `DATABASE` | [src/api/database/index.js](src/api/database/index.js) |
-| `DATABASEPORT` | [src/api/database/index.js](src/api/database/index.js) |
-| `DEVPORT` | [src/app.js](src/app.js) |
-| `HOST` | [src/api/database/index.js](src/api/database/index.js) |
-| `PASSWORD` | [src/api/database/index.js](src/api/database/index.js) |
-| `PORT` | [src/app.js](src/app.js) |
-| `USER` | [src/api/database/index.js](src/api/database/index.js) |
+| [src/app.js](src/app.js) | Express, sessions, uploads, templates, and startup. |
+| [src/api/database/index.js](src/api/database/index.js) | PostgreSQL pool configuration. |
+| [src/routes](src/routes) | Root, `/usuarios`, and `/peliculas` routes. |
+| [src/api/controllers](src/api/controllers) | User and movie queries and handlers. |
+| [src/helpers/passport.js](src/helpers/passport.js) | Local authentication strategy. |
+| [src/views](src/views) | Catalog, detail, editor, profile, and favorites views. |
 
-No guardes credenciales reales en la documentación. Si hay `.env.example`, úsalo como referencia y revisa cómo carga la configuración el punto de entrada.
+## Project status
 
-## Validación y estado
-
-Esta guía se contrastó con el árbol de archivos y los manifiestos del repositorio. No se ha validado una ejecución completa contra servicios externos, bases de datos o hardware. Las versiones y los scripts mostrados describen el código actual; no implican que sus dependencias antiguas sigan siendo compatibles.
+This is a historical learning project with older dependencies and no automated test script. `node --check src/app.js` checks syntax without connecting to PostgreSQL. Full account, upload, and movie workflows need a configured test database. The application contains a hard-coded session secret and a tracked historical `.env`; replace configuration for your own environment before deployment.
